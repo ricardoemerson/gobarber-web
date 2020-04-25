@@ -37,6 +37,8 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': ['error', { 'allowExpressions': true }],
     'template-curly-spacing': ['error', 'always'],
     'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
 
 
     'import-helpers/order-imports': [
