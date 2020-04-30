@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import {
   FiArrowLeft, FiMail, FiUser, FiLock,
 } from 'react-icons/fi';
+
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -9,27 +13,52 @@ import Input from '../../components/Input';
 import { Container, Content, Background } from './styles';
 
 import logoImg from '../../assets/logo.svg';
+import getValidationErrors from '../../utils/getValidationErrors';
 
-const SignUp: React.FC = () => (
-  <Container>
-    <Background />
+const SignUp: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
 
-    <Content>
-      <img src={ logoImg } alt="GoBarber" />
+  const handleSubmit = useCallback(async (data: object) => {
+    try {
+      formRef.current?.setErrors({});
 
-      <form>
-        <h1>Faça seu Cadastro</h1>
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
+        email: Yup.string().required('E-mail obrigatório').email('Informe um e-mail válido'),
+        password: Yup.string().min(6, 'No mínimo 6 caracteres'),
+      });
 
-        <Input name="name" icon={ FiUser } placeholder="Nome" />
-        <Input name="email" icon={ FiMail } placeholder="E-mail" />
-        <Input name="password" icon={ FiLock } placeholder="Senha" />
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+    } catch (err) {
+      const errors = getValidationErrors(err);
 
-        <Button type="submit">Cadastrar</Button>
-      </form>
+      formRef.current?.setErrors(errors);
+    }
+  }, []);
 
-      <a href="new"><FiArrowLeft /> Voltar para logon</a>
-    </Content>
-  </Container>
-);
+  return (
+    <Container>
+      <Background />
+
+      <Content>
+        <img src={ logoImg } alt="GoBarber" />
+
+        <Form ref={ formRef } onSubmit={ handleSubmit }>
+          <h1>Faça seu Cadastro</h1>
+
+          <Input name="name" icon={ FiUser } placeholder="Nome" />
+          <Input name="email" icon={ FiMail } placeholder="E-mail" />
+          <Input name="password" icon={ FiLock } placeholder="Senha" />
+
+          <Button type="submit">Cadastrar</Button>
+        </Form>
+
+        <a href="new"><FiArrowLeft /> Voltar para logon</a>
+      </Content>
+    </Container>
+  );
+};
 
 export default SignUp;
