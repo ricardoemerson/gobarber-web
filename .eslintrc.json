@@ -33,7 +33,8 @@
     "import/prefer-default-export": "off",
     "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }],
     "no-console": "off",
-    "react/jsx-curly-spacing": [2, { "when": "always", "allowMultiline": true }],
+    // "react/jsx-curly-spacing": [2, { "when": "always", "allowMultiline": true }],
+    "react/jsx-curly-spacing": [2, {"when": "always", "spacing": { "objectLiterals": "never" }}],
     "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
     "template-curly-spacing": ["error", "always"],
     "react/jsx-one-expression-per-line": "off",
@@ -42,7 +43,7 @@
     "max-len": ["error", { "code": 120 }],
     "no-unused-expressions": "off",
     "object-curly-newline": ["error", {
-      "ObjectPattern": { "multiline": false, "minProperties": 6 }
+      "ObjectPattern": { "multiline": false, "minProperties": 4 }
     }],
 
 
