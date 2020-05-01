@@ -45,11 +45,11 @@
     "object-curly-newline": ["error", {
       "ObjectPattern": { "multiline": false, "minProperties": 4 }
     }],
+    "arrow-parens": ["error", "as-needed"],
 
 
     /**
       "arrow-body-style": "off",
-      "arrow-parens": ["error", "as-needed"],
       "no-underscore-dangle": ["error", { "allow": ["_id"] }],
       "no-use-before-define": ["error", { "variables": false }],
       "no-shadow": "off",
