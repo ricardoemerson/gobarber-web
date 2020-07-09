@@ -17,7 +17,7 @@ import logoImg from '../../assets/logo.svg';
 import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
 
-interface SignUpFormaData {
+interface SignUpFormData {
   name: string;
   email: string;
   password: string;
@@ -28,7 +28,7 @@ const SignUp: React.FC = () => {
   const { addToast } = useToast();
   const history = useHistory();
 
-  const handleSubmit = useCallback(async (data: SignUpFormaData) => {
+  const handleSubmit = useCallback(async (data: SignUpFormData) => {
     try {
       formRef.current?.setErrors({});
 
@@ -38,9 +38,7 @@ const SignUp: React.FC = () => {
         password: Yup.string().min(6, 'No mínimo 6 caracteres'),
       });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+      await schema.validate(data, { abortEarly: false });
 
       await api.post('/users', data);
 
@@ -80,7 +78,7 @@ const SignUp: React.FC = () => {
 
             <Input name="name" icon={ FiUser } placeholder="Nome" />
             <Input name="email" icon={ FiMail } placeholder="E-mail" />
-            <Input name="password" icon={ FiLock } placeholder="Senha" />
+            <Input name="password" icon={ FiLock } type="password" placeholder="Senha" />
 
             <Button type="submit">Cadastrar</Button>
           </Form>
