@@ -27,23 +27,14 @@
     "eslint-plugin-import-helpers"
   ],
   "rules": {
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-    "import/prefer-default-export": "off",
+    "arrow-parens": ["error", "as-needed"],
     "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }],
-    "no-console": "off",
-    // "react/jsx-curly-spacing": [2, { "when": "always", "allowMultiline": true }],
-    "react/jsx-curly-spacing": [2, {"when": "always", "spacing": { "objectLiterals": "never" }}],
-    "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
-    "template-curly-spacing": ["error", "always"],
-    "react/jsx-one-expression-per-line": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/prop-types": "off",
-    "jsx-a11y/label-has-associated-control": "off",
+    "import/prefer-default-export": "off",
+    "import/no-duplicates": "off",
     "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "max-len": ["warn", { "code": 140 }],
+    "no-console": "off",
     "no-unused-expressions": "off",
     "object-curly-newline": ["error", {
       "ObjectExpression": { "multiline": true, "minProperties": 5 },
@@ -51,8 +42,18 @@
       "ImportDeclaration": { "multiline": true, "minProperties": 5 },
       "ExportDeclaration": { "multiline": true, "minProperties": 5 }
     }],
-    "arrow-parens": ["error", "as-needed"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-curly-spacing": [2, {"when": "always", "spacing": { "objectLiterals": "never" }}],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "template-curly-spacing": ["error", "always"],
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
     "@typescript-eslint/no-use-before-define": ["error", { "variables": false }],
+    // "react/jsx-curly-spacing": [2, { "when": "always", "allowMultiline": true }],
 
 
     /**
