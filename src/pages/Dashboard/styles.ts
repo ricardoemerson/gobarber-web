@@ -1,4 +1,4 @@
-import { shade } from 'polished';
+import { shade, darken } from 'polished';
 
 import styled from 'styled-components';
 
@@ -16,22 +16,23 @@ export const HeaderContent = styled.div`
   max-width: 1120px;
   margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
-  > img {
-    height: 80px;
+  > div {
+    display: flex;
+    align-items: center;
+
+    > img {
+      height: 80px;
+    }
   }
 
   button {
-    margin-left: auto;
+    /* margin-left: auto; */
     background: transparent;
     border: 0;
-
-    svg {
-      color: #999591;
-      width: 20px;
-      height: 20px;
-    }
+    cursor: pointer;
   }
 `;
 
@@ -57,8 +58,14 @@ export const Profile = styled.div`
     color: #f4ede8;
   }
 
-  strong {
+  a {
+    text-decoration: none;
     color: #ff9000;
+    transition: color 0.2s;
+
+    &:hover {
+      color: ${ shade(0.2, '#ff9000') };
+    }
   }
 `;
 

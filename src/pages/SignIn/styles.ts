@@ -35,7 +35,7 @@ export const AnimationContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  place-content: center;
+  justify-content: center;
 
   animation: ${ appearFromLeft } 1s;
 

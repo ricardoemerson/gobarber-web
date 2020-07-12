@@ -6,6 +6,8 @@ import { format, isToday, parseISO, isAfter } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
 import 'react-day-picker/lib/style.css';
+import { Link } from 'react-router-dom';
+
 import api from '../../services/api';
 
 import {
@@ -108,18 +110,22 @@ const Dashboard: React.FC = () => {
     <Container>
       <Header>
         <HeaderContent>
-          <img src={ logoImg } alt="GoBarber" />
+          <div>
+            <img src={ logoImg } alt="GoBarber" />
 
-          <Profile>
-            <img src={ user.avatar_url } alt={ user.name } />
+            <Profile>
+              <img src={ user.avatar_url } alt={ user.name } />
 
-            <div>
-              <span>Bem-vindo,</span>
-              <strong>{ user.name}</strong>
-            </div>
-          </Profile>
+              <div>
+                <span>Bem-vindo,</span>
+                <Link to="/profile"><strong>{ user.name}</strong></Link>
+              </div>
+            </Profile>
+          </div>
 
-          <button type="button" onClick={ signOut }><FiPower /></button>
+          <button type="button" onClick={ signOut }>
+            <FiPower size={ 20 } color="#999591" />
+          </button>
         </HeaderContent>
       </Header>
 
