@@ -1,4 +1,4 @@
-import { shade, darken } from 'polished';
+import { shade } from 'polished';
 
 import styled from 'styled-components';
 
